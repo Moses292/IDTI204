@@ -1,0 +1,29 @@
+name: Booking System CI
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start booking system
+        run: node api.js &
+
+      - name: Wait for server
+        run: sleep 5
+
+      - name: Check system is running
+        run: curl -f http://localhost:3000
