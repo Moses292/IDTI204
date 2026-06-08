@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_URL from "../api";
 import { FaEnvelope, FaLock, FaEye } from "react-icons/fa";
 
 function Login({ onAuthSuccess, setMode }) {
@@ -13,7 +14,7 @@ if (!email || !password) {
     return;
   }
 
-    const res = await fetch("http://localhost:5000/login", {
+    const res = await fetch(`${API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

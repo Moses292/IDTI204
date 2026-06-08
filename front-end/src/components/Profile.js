@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_URL from "../api";
 import { FaUserCircle } from "react-icons/fa";
 
 function Profile({ user }) {
@@ -53,7 +54,7 @@ function Profile({ user }) {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/update-profile", {
+      const res = await fetch(`${API_URL}/update-profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

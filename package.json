@@ -2,10 +2,8 @@
   "scripts": {
     "start": "npm start --prefix back-end",
     "start:frontend": "npm start --prefix front-end",
-    "start:backend": "npm start --prefix back-end"
+    "start:backend": "npm start --prefix back-end",
+    "build": "npm install --prefix front-end && npm run build --prefix front-end"
   },
-  "dependencies": {
-    "react-icons": "^5.6.0",
-    "react-router-dom": "^6.30.3"
-  }
+  "dependencies": {}
 }

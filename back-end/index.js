@@ -3,7 +3,25 @@ const cors = require("cors");
 const { Pool } = require("pg");
 
 const app = express();
-app.use(cors());
+
+// Allow requests from the deployed front-end and local development
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL // Set this on Render to your front-end URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (e.g., Postman or server-to-server)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
 const pool = new Pool({

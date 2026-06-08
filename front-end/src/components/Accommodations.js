@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_URL from "../api";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe } from "react-icons/fa";
 
 // ✅ IMPORT IMAGES (FROM YOUR SCREENSHOT)
@@ -19,7 +20,7 @@ function Accommodations() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/accommodations")
+    fetch(`${API_URL}/accommodations`)
       .then(res => res.json())
       .then(data => {
         setAccommodations(data);
