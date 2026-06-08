@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_URL from "../api";
 import { FaPhone, FaEnvelope, FaGlobe } from "react-icons/fa";
 
 import atmosphere from "../images/logos/atmosphere.jpg";
@@ -20,7 +21,7 @@ function ForeignerTours() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/tours")
+    fetch(`${API_URL}/tours`)
       .then(res => res.json())
       .then(data => setTours(data));
   }, []);

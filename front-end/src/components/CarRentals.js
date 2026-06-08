@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_URL from "../api";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe } from "react-icons/fa";
 
 import avis from "../images/car_logos/avisvanuatu.png";
@@ -19,7 +20,7 @@ function CarRentals() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/car-rentals")
+    fetch(`${API_URL}/car-rentals`)
       .then(res => res.json())
       .then(data => setRentals(data));
   }, []);
